@@ -6,8 +6,13 @@ export const imdbApi = createApi({
     getAllTitles: builder.query({
       query: () => `/titles`,
     }),
+    getCreditsByTitleId:builder.query({
+        query:(tid)=>{
+            return `/titles/${tid}/credits`
+        }
+    })
   }),
 })
 
 
-export const { useGetAllTitlesQuery } = imdbApi
+export const { useGetAllTitlesQuery,useGetCreditsByTitleIdQuery} = imdbApi

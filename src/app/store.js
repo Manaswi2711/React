@@ -1,17 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { pokemonApi } from './services/pokemon'
+
 import { productsApi } from '../services/productsApi'
 import { imdbApi } from '../services/imdbApi'
+import { pokemonApi } from '../services/pokemon'
+
 
 export const store = configureStore({
   reducer: {
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
+   [pokemonApi.reducerPath]:pokemonApi.reducer,
     [productsApi.reducerPath]:productsApi.reducer,
-    [imdbApi.reducerPath]:imdbApi.resucer
+    [imdbApi.reducerPath]:imdbApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(pokemonApi.middleware,
+    getDefaultMiddleware().concat(
+        pokemonApi.middleware,
         productsApi.middleware,
         imdbApi.middleware
     ),
